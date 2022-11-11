@@ -1,0 +1,6 @@
+11/10: Setup -  these are the things i have installed while in the virtual envrionemnt (pipenv)
+    flask
+    PyMySQL
+    flask_bcrypt
+
+
