@@ -10,16 +10,16 @@ bcrypt = Bcrypt(app)
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
-    db = "user_properties_schema"
-    self.id = data['id']
-    self.first_name = data['first_name']
-    self.last_name = data['last_name']
-    self.email = data['email']
-    self.password = data['password']
-    self.salary = data['salary']
-    self.created_at = data['created_at']
-    self.updated_at = data['updated_at']
-    # self."_______" = []
+    db = "users_properties_schema"
+    def __init__(self, data):
+        self.id = data['id']
+        self.first_name = data['first_name']
+        self.last_name = data['last_name']
+        self.email = data['email']
+        self.password = data['password']
+        self.salary = data['salary']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
 
     @classmethod
     def save(cls,data):
