@@ -34,3 +34,15 @@ class User:
         for row in results:
             users.append(cls(row))
         return users
+
+    @classmethod
+    def get_id():
+        pass
+
+    @classmethod
+    def get_email():
+        pass
+
+    @staticmethod
+    def validate_register(user):
+        pass
