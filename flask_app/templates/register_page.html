@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='log_reg_styles.css') }}">
+    <title>A Web Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <p class="large big-col">Affordable Home</p>
+        <p class="large big-col">Looking for ....?</p>
+    </div>
+    <div>
+        <input type="submit" value="Login" class="offset-btn">
+        <input type="submit" value="Sign Up" class="offset-btn">
+    </div>
+    <div class="col">
+        <form action="/register" method="POST">
+            {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="container">
+                <label for="first_name" class="label-col">First name:</label>
+                <input type="text" name="first_name" id="first_name">
+            </div>
+            <div class="container">
+                <label for="last_name" class="label-col">Last name:</label>
+                <input type="text" name="last_name" id="last_name">
+            </div>
+            <div class="container">
+                <label for="email" class="label-col">Email:</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="container">
+                <label for="password" class="label-col">Password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="container">
+                <label for="re-enter password" class="label-col">Re-enter Password:</label>
+                <input type="password" name="re-enter password" id="re-enter password">
+            </div>
+            <input type="submit" value="Submit" class="offset-btn">
+        </form>
+    </div>
+</body>
+
+</html>
