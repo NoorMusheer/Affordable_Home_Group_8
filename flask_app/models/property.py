@@ -12,10 +12,12 @@ class Property:
         self.id = p_data['id']
         self.street_address = p_data['street_address']
         self.city = p_data['city']
+        self.state = p_data['state']
         self.zip_code = p_data['zip_code']
-        self.propertiescol = p_data['propertiescol']
+        self.type = p_data['type']
         self.size = p_data['size']
         self.price = p_data['price']
+        self.favorite = p_data['favorite']
         self.created_at = p_data['created_at']
         self.updated_at = p_data['updated_at']
         self.buyer_id = p_data['buyer_id']
@@ -31,7 +33,7 @@ class Property:
 
     @classmethod
     def add_to_properties_list(cls, prop_data):
-        query = "INSERT INTO properties (street_address, city, state, zip_code, type, price, created_at, updated_at, buyer_id) VALUES (%(street_address)s, %(city)s, %(state)s, %(zip_code)s, %(type)s, %(price)s, NOW(), NOW(), %(buyer_id)s);"
+        query = "INSERT INTO properties (street_address, city, state, zip_code, type, size, price, favorite, created_at, updated_at, buyer_id) VALUES (%(street_address)s, %(city)s, %(state)s, %(zip_code)s, %(type)s, %(size)s, %(price)s, %(favorite)s, NOW(), NOW(), %(buyer_id)s);"
         return connectToMySQL(cls.DB).query_db(query, prop_data)
 
 
