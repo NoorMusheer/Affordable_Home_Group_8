@@ -1,8 +1,10 @@
 from flask_app import app
 from flask_app.config.mysqlconnectin import connectToMySQL
 from flask import flash
+from flask_app.controllers.mtg_rates import avg_rate
+import http.client
+import _json
 from flask_bcrypt import Bcrypt
-# from flask_app.models import "_______"
 import re
 
 bcrypt = Bcrypt(app)
@@ -23,7 +25,7 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO users (first_name, last_name, email, password, salary) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(salary)s)"
+        query = "INSERT INTO users (first_name, last_name, email, password, salary) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(salary)s);"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -34,3 +36,21 @@ class User:
         for row in results:
             users.append(cls(row))
         return users
+
+    @staticmethod
+    def get_max_price(data):
+        n = 360
+        r = (avg_rate/12)
+        P = int(data['P'])
+        dn_pmt = int(data['down_payment'])
+        max_loan = P*(((1+r)**n)-1) // (r*((1 + r)**n))
+        max_price = int(max_loan + dn_pmt)
+        if (max_loan > (0.95*(max_price))):
+            max_price = int((dn_pmt * 20))
+        return max_price
+        
+        # print("---***---HERE IS MAX LOAN AMT ---*** --- : ", max_loan)
+        # print("---***---HERE IS MAX PRICE ---*** --- : ", max_price)
+        # print("${:0,.0f}".format(max_price))
+
+
