@@ -66,8 +66,6 @@ class User:
     @staticmethod
     def validate_login(user_exists, user_login_data):
         is_valid = True
-        print("***USER EXISTS :", user_exists)
-        print("***---USER LOGIN INFO :", user_login_data)
         if not user_exists:
             flash("**The entered E-mail does not exist. Please register", "login")
             is_valid = False

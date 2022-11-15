@@ -20,7 +20,7 @@ def user_parameters ():
         "max_price" : max_price
     }
     addresses = property.Property.get_listings_by_max_price(home_data_input)
-    return render_template('practice_user_results.html', addresses = addresses)
+    return render_template('results.html', addresses = addresses)
 
 @app.route ('/dashboard_practice')
 def user_dashboard():

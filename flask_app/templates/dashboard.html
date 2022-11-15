@@ -19,30 +19,51 @@
 </style>
 
 <body>
-    <div>
-        <div class="nav">
+    <div class="container">
+        <div class="header-row">
             <h1 class="nav-title">Afordable Homes</h1>
-            <h3>Welcome ...?</h3>
-            <input type="submit" value="Login" class="offset-btn">
-            <input type="submit" value="Sign Up" class="offset-btn">
+            <h3>Welcome {{session['first_name']}}</h3>
+            <h4>Dashboard</h4>
         </div>
-        <p class="large big-col">My Profile<a href="/...?"> Edit</a><a href="/...?"> Password</a></p>
-        <div class="container" , method="POST">
-            <div class="row">
-                <div class="column">
-                    <table style="width:60%">
-                        <tr>
-                            <th>Name</th>
-                            <th>Est monthly payment</th>
-                            <th>Type</th>
-                            <th>bedroom</th>
-                            <th>sq ft</th>
-                            <th>lot size</th>
-                        </tr>
-                    </table>
+        <div class="nav-row">
+            <a href="/logout">Logout</a>
+        </div>
+        <br>
+        <div class="main-row">
+            <form action="/params" method="POST">
+                <div class="form-input">
+                    <label for="">Credit Score: </label>
+                    <input type="number" name="credit_score">
                 </div>
-            </div>
+                <div class="form-input">
+                    <label for="">Max Monthly Payment</label>
+                    <input type="number" name="max_monthly">
+                </div>
+                <div class="form_input">
+                    <label for="">Down Payment</label>
+                    <input type="number" name="down_payment">
+                </div>
+                <div class="form-input">
+                    <label for="">City</label>
+                    <input type="text" name="city">
+                </div>
+                <div class="form-input">
+                    <label for="">State</label>
+                    <input type="text" name="state">
+                </div>
+                <div class="form-input">
+                    <label for="">Search Radius</label>
+                    <input type="number" name="radius">
+                </div>
+                <input type="submit" value="Get Listings">
+            </form>
         </div>
+    
+
+
+
+
+    </div>
 </body>
 
 </html>

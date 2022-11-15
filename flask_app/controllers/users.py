@@ -8,6 +8,11 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('login_page.html')
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
+
 @app.route('/reg_page')
 def send_to_reg_page():
     return render_template('register_page.html')
@@ -37,10 +42,11 @@ def logged_in_user():
         "password":request.form['password']
         }
     user_exists = user.User.get_user_by_email(user_login_data)
-    print 
     if not user.User.validate_login(user_exists, user_login_data):
         return redirect('/')
-    session.id = user_exists['id']
+    session['id'] = user_exists['id']
+    session['first_name'] = user_exists['first_name']
+    print ("First NAME : ", session['first_name'])
     return redirect('/dashboard')
 
 

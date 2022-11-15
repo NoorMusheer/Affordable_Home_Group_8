@@ -6,7 +6,7 @@ import json
 
 
 class Property:
-    DB = "users_properties_schema"
+    db = "users_properties_schema"
 
     def __init__(self, p_data):
         self.id = p_data['id']
@@ -25,7 +25,7 @@ class Property:
     @classmethod
     def get_all_properties(cls):
         query = "SELECT * FROM properties;"
-        results = connectToMySQL(cls.DB).query_db(query)
+        results = connectToMySQL(cls.db).query_db(query)
         properties = []
         for row in properties:
             properties.append(cls(row))
@@ -34,12 +34,11 @@ class Property:
     @classmethod
     def add_to_properties_list(cls, prop_data):
         query = "INSERT INTO properties (street_address, city, state, zip_code, type, size, price, favorite, created_at, updated_at, buyer_id) VALUES (%(street_address)s, %(city)s, %(state)s, %(zip_code)s, %(type)s, %(size)s, %(price)s, %(favorite)s, NOW(), NOW(), %(buyer_id)s);"
-        return connectToMySQL(cls.DB).query_db(query, prop_data)
+        return connectToMySQL(cls.db).query_db(query, prop_data)
 
 
     @staticmethod
     def get_listings_by_max_price(home_data_input):
-        print("___MAX PRICE IS ____:", home_data_input['max_price'])
         conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
         headers = {
             'X-RapidAPI-Key': "",
@@ -51,7 +50,6 @@ class Property:
         data = res.read()
         parse_json = json.loads(data)
         prop_data = parse_json['listings']
-        print ("---***---PROP DATA ---***--- :", data)
         addresses = []
         for each in prop_data:
             addr_data = {
@@ -60,6 +58,7 @@ class Property:
                 "state":each['address_new']['state_code'],
                 "zip_code":each['address_new']['postal_code'],
                 "type":each['prop_type'],
+                "size":each['sqft_raw'],
                 "price":int((each['price']).strip('$').replace(",","")),
                 "web_url":each['rdc_web_url'],
                 "photo_url":each['photo'],
