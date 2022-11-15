@@ -10,15 +10,16 @@
 
 <body>
     <div class="container">
+        
         <p class="large big-col">Affordable Home</p>
         <p class="large big-col">Looking for ....?</p>
     </div>
     <div>
         <input type="submit" value="Login" class="offset-btn">
-        <input type="submit" value="Sign Up" class="offset-btn">
+        <a href="/reg_page"><input type="submit" value="Sign Up" class="offset-btn"></a> 
     </div>
     <div class="col">
-        <form action="/login" method="POST">
+        <form action="/logged_in" method="POST">
             {% with messages = get_flashed_messages(category_filter=["login"]) %}
                 {% if messages %}
                     {% for message in messages %}

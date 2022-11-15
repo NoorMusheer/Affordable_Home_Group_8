@@ -1,8 +1,10 @@
 from flask_app import app
 from flask_app.config.mysqlconnectin import connectToMySQL
 from flask import flash
+from flask_app.controllers.mtg_rates import avg_rate
+import http.client
+import _json
 from flask_bcrypt import Bcrypt
-# from flask_app.models import "_______"
 import re
 
 bcrypt = Bcrypt(app)
@@ -22,8 +24,8 @@ class User:
         self.updated_at = data['updated_at']
 
     @classmethod
-    def save(cls,data):
-        query = "INSERT INTO users (first_name, last_name, email, password, salary) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(salary)s)"
+    def create_user(cls,data):
+        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW() );"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -34,3 +36,56 @@ class User:
         for row in results:
             users.append(cls(row))
         return users
+
+    @classmethod
+    def get_user_by_email(cls, data):
+        query = "SELECT * FROM users WHERE email = %(email)s ;"
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result == ():
+            return False
+        else: 
+            return result[0]
+        # user_by_email = []
+        # print ("---***GET USER BY EMAIL RESULT :", user_by_email)
+        # for each in result:
+        #     user_by_email.append(each)
+        # return user_by_email
+
+
+    @staticmethod
+    def validate_reg(data, user_exists, pw_check):
+        is_valid = True
+        if user_exists:
+            flash("**This email is already registered. Please login or create a new account", "register")
+            is_valid = False
+        if (pw_check['password'] != pw_check['re_enter_password']):
+            flash("**Passwords do not match. Please try again. ", "register")
+            is_valid = False
+        return is_valid
+
+    @staticmethod
+    def validate_login(user_exists, user_login_data):
+        is_valid = True
+        if not user_exists:
+            flash("**The entered E-mail does not exist. Please register", "login")
+            is_valid = False
+        elif not bcrypt.check_password_hash(user_exists['password'], user_login_data['password']):
+            flash ("** Incorrect password. Please try again. ", "login")
+            is_valid = False
+        return is_valid
+
+
+    @staticmethod
+    def get_max_price(data):
+        n = 360
+        r = (avg_rate/12)
+        P = int(data['P'])
+        dn_pmt = int(data['down_payment'])
+        max_loan = P*(((1+r)**n)-1) // (r*((1 + r)**n))
+        max_price = int(max_loan + dn_pmt)
+        if (max_loan > (0.95*(max_price))):
+            max_price = int((dn_pmt * 20))
+        return max_price
+        # print("${:0,.0f}".format(max_price))
+
+
