@@ -41,11 +41,15 @@ class User:
     def get_user_by_email(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s ;"
         result = connectToMySQL(cls.db).query_db(query, data)
-        user_by_email = []
-        print ("---***GET USER BY EMAIL RESULT :", user_by_email)
-        for each in result:
-            user_by_email.append(each)
-        return user_by_email
+        if result == ():
+            return False
+        else: 
+            return result[0]
+        # user_by_email = []
+        # print ("---***GET USER BY EMAIL RESULT :", user_by_email)
+        # for each in result:
+        #     user_by_email.append(each)
+        # return user_by_email
 
 
     @staticmethod
@@ -56,6 +60,19 @@ class User:
             is_valid = False
         if (pw_check['password'] != pw_check['re_enter_password']):
             flash("**Passwords do not match. Please try again. ", "register")
+            is_valid = False
+        return is_valid
+
+    @staticmethod
+    def validate_login(user_exists, user_login_data):
+        is_valid = True
+        print("***USER EXISTS :", user_exists)
+        print("***---USER LOGIN INFO :", user_login_data)
+        if not user_exists:
+            flash("**The entered E-mail does not exist. Please register", "login")
+            is_valid = False
+        elif not bcrypt.check_password_hash(user_exists['password'], user_login_data['password']):
+            flash ("** Incorrect password. Please try again. ", "login")
             is_valid = False
         return is_valid
 

@@ -29,3 +29,19 @@ def register_user():
         return redirect ('/reg_page')
     user.User.create_user(data)
     return redirect ('/')
+
+@app.route('/logged_in', methods=['POST'])
+def logged_in_user():
+    user_login_data = {
+        "email":request.form['email'],
+        "password":request.form['password']
+        }
+    user_exists = user.User.get_user_by_email(user_login_data)
+    if not user.User.validate_login(user_exists, user_login_data):
+        return redirect('/')
+    return redirect('/dashboard')
+
+
+@app.route('/dashboard')
+def main_page():
+    return render_template('dashboard.html')
