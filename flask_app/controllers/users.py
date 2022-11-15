@@ -37,8 +37,10 @@ def logged_in_user():
         "password":request.form['password']
         }
     user_exists = user.User.get_user_by_email(user_login_data)
+    print 
     if not user.User.validate_login(user_exists, user_login_data):
         return redirect('/')
+    session.id = user_exists['id']
     return redirect('/dashboard')
 
 
