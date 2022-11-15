@@ -11,9 +11,10 @@ def user_parameters ():
         "P": request.form['max_monthly'],
     }
     max_price = user.User.get_max_price(mtg_data_input)
+    frmtd_city = (request.form['city']).replace(" ", "_")
 
     home_data_input = {
-        "city":request.form['city'],
+        "city":frmtd_city,
         "state":request.form['state'],
         "radius":request.form['radius'],
         "max_price" : max_price

@@ -1,6 +1,6 @@
-from flask import render_template
+from flask import render_template, redirect, session, request
 from flask_app import app
-from flask_app.models.user import User
+from flask_app.models import user
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -8,3 +8,24 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('login_page.html')
 
+@app.route('/reg_page')
+def send_to_reg_page():
+    return render_template('register_page.html')
+
+@app.route('/register', methods=['POST'])
+def register_user():
+    data ={
+        "first_name":request.form['first_name'], 
+        "last_name":request.form['last_name'],
+        "email":request.form['email'],
+        "password":bcrypt.generate_password_hash(request.form['password']),
+    }
+    pw_check = {
+        "password":request.form['password'],
+        "re_enter_password":request.form['re_enter_password']
+    }
+    user_exists = user.User.get_user_by_email(data)
+    if not user.User.validate_reg(data, user_exists, pw_check):
+        return redirect ('/reg_page')
+    user.User.create_user(data)
+    return redirect ('/')

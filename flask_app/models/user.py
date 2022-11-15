@@ -24,8 +24,8 @@ class User:
         self.updated_at = data['updated_at']
 
     @classmethod
-    def save(cls,data):
-        query = "INSERT INTO users (first_name, last_name, email, password, salary) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(salary)s);"
+    def create_user(cls,data):
+        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW() );"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -36,6 +36,29 @@ class User:
         for row in results:
             users.append(cls(row))
         return users
+
+    @classmethod
+    def get_user_by_email(cls, data):
+        query = "SELECT * FROM users WHERE email = %(email)s ;"
+        result = connectToMySQL(cls.db).query_db(query, data)
+        user_by_email = []
+        print ("---***GET USER BY EMAIL RESULT :", user_by_email)
+        for each in result:
+            user_by_email.append(each)
+        return user_by_email
+
+
+    @staticmethod
+    def validate_reg(data, user_exists, pw_check):
+        is_valid = True
+        if user_exists:
+            flash("**This email is already registered. Please login or create a new account", "register")
+            is_valid = False
+        if (pw_check['password'] != pw_check['re_enter_password']):
+            flash("**Passwords do not match. Please try again. ", "register")
+            is_valid = False
+        return is_valid
+
 
     @staticmethod
     def get_max_price(data):
@@ -48,9 +71,6 @@ class User:
         if (max_loan > (0.95*(max_price))):
             max_price = int((dn_pmt * 20))
         return max_price
-        
-        # print("---***---HERE IS MAX LOAN AMT ---*** --- : ", max_loan)
-        # print("---***---HERE IS MAX PRICE ---*** --- : ", max_price)
         # print("${:0,.0f}".format(max_price))
 
 
