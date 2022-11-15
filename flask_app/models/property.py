@@ -42,7 +42,7 @@ class Property:
         print("___MAX PRICE IS ____:", home_data_input['max_price'])
         conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
         headers = {
-            'X-RapidAPI-Key': "c05b87795bmsh798a906721c803ep1bb0e9jsn76bc358834d6",
+            'X-RapidAPI-Key': "",
             'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
             }
         conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) +"&city=" + str(home_data_input['city']) + "&offset=0&limit=3&sort=relevance&radius="+ str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
