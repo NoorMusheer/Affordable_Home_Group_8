@@ -36,6 +36,9 @@ class Property:
             properties.append(row)
         return properties
 
+
+# sss
+
     @classmethod
     def add_to_properties_list(cls, prop_data):
         query = "INSERT INTO properties (street_address, city, state, zip_code, type, size, price, photo, web, beds, baths, created_at, updated_at, buyer_id) VALUES (%(street_address)s, %(city)s, %(state)s, %(zip_code)s, %(type)s, %(size)s, %(price)s, %(photo)s, %(web)s, %(beds)s, %(baths)s, NOW(), NOW(), %(buyer_id)s);"
