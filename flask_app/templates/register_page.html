@@ -5,50 +5,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='log_reg_styles.css') }}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <title>A Web Page</title>
 </head>
 
 <body>
-    <div class="container">
-        <p class="large big-col">Affordable Home</p>
-        <p class="large big-col">Looking for ....?</p>
-    </div>
-    <div>
-        <input type="submit" value="Login" class="offset-btn">
-        <input type="submit" value="Sign Up" class="offset-btn">
-    </div>
-    <div class="col">
-        <form action="/register" method="POST">
-            {% with messages = get_flashed_messages(category_filter=["register"]) %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p>{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            <div class="container">
-                <label for="first_name" class="label-col">First name:</label>
-                <input type="text" name="first_name" id="first_name">
-            </div>
-            <div class="container">
-                <label for="last_name" class="label-col">Last name:</label>
-                <input type="text" name="last_name" id="last_name">
-            </div>
-            <div class="container">
-                <label for="email" class="label-col">Email:</label>
-                <input type="email" name="email" id="email">
-            </div>
-            <div class="container">
-                <label for="password" class="label-col">Password:</label>
-                <input type="password" name="password" id="password">
-            </div>
-            <div class="container">
-                <label for="re_enter_password" class="label-col">Re-enter Password:</label>
-                <input type="password" name="re_enter_password" id="re_enter_password">
-            </div>
-            <input type="submit" value="Submit" class="offset-btn">
-        </form>
+    <a href="/" class="float-end">Back</a>
+    <div class="container" id="sign_up">
+        <div class="text-center">
+            <h1>Affordable Home</h1>
+            <p>sign up here to access our site.</p>
+        </div>
+        <div class="container row" id="small_c">
+            <form action="/register" method="POST">
+                {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <div class="row mb-3" id="small_c">
+                    <label for="first_name" class="label-col">First name:</label>
+                    <input type="text" name="first_name" id="first_name">
+                </div>
+                <div class="row mb-3" id="small_c">
+                    <label for="last_name" class="label-col">Last name:</label>
+                    <input type="text" name="last_name" id="last_name">
+                </div>
+                <div class="row mb-3" id="small_c">
+                    <label for="email" class="label-col">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="row mb-3" id="small_c">
+                    <label for="password" class="label-col">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="row mb-3" id="small_c">
+                    <label for="re_enter_password" class="label-col">Re-enter Password:</label>
+                    <input type="password" name="re_enter_password" id="re_enter_password">
+                </div>
+                <input type="submit" value="Submit" class="offset-btn">
+            </form>
+        </div>
     </div>
 </body>
 
