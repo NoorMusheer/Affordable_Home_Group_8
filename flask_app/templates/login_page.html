@@ -11,15 +11,12 @@
     <title>A Web Page</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="login_page">
         <div class="text-center">
             <h1>Affordable Homes</h1>
             <h2>Looking for a new Home?</h2>
         </div>
-        <div class="d-flex justify-content-center">
-            <a href="/reg_page"><input type="submit" value="Sign Up" class="offset-btn"></a> 
-        </div>
-        <div class="col">
+        <div class="col" id="login_box">
             <form action="/logged_in" method="POST">
                 {% with messages = get_flashed_messages(category_filter=["login"]) %}
                     {% if messages %}
@@ -40,7 +37,12 @@
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                 </div>
-                <input type="submit" value="Login" class="offset-btn">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <input type="submit" value="Login" class="offset-btn">
+                    </div>
+                    <a href="/reg_page"><input type="submit" value="Sign Up" class="offset-btn"></a> 
+                </div>
             </form>
         </div>
     </div>

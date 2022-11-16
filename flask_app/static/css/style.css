@@ -8,20 +8,25 @@ body {
     padding: 30px;
     max-width: auto;
     max-height: auto;
-    border: 2px groove green;
+    border: 2px groove rgb(2, 106, 186);
     background-color: rgb(244, 244, 244);
 }
 
-.container{
+#login_page{
     max-width: 600px;
     height: 600px;
-    border: 1px groove green;
+    background-image: url(../img/imagereader.jpg);
+    border: 1px groove rgb(10, 103, 175);
+    background-size: cover;
+    background-position: center;
 }
-h1,h2{
+h1,h2, #login_box{
     color: azure;
-    
 }
 
+#login_box{
+    padding: 20px;
+}
 
 .form-input{
     margin: 0;
