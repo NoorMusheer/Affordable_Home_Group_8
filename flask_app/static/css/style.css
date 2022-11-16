@@ -1,6 +1,6 @@
 *{
     padding: 0;
-    margin: 20px;
+    margin: 18px;
 }
 
 body {
@@ -15,10 +15,15 @@ body {
 .container{
     max-width: 600px;
     height: 600px;
-    background-color: rgb(106, 203, 106);
     border: 1px groove green;
 }
 h1,h2{
     color: azure;
     
+}
+
+
+.form-input{
+    margin: 0;
+    padding: 0;
 }
