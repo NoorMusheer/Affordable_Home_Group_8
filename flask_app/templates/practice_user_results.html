@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
     <title>Practice Results</title>
 </head>
 <body>
-    Practice User Results Page Here
-    <div>
+    <div class="container">
+        <div class="row header-row">
+            <h1>HERE ARE YOUR RESULTS</h1>
+        </div>
+        <br>
+        <div style="border:2px solid black">
+            <h5>$3500 max payment</h5><br>
+            <h5>6.75% is the average rate for a 30 yr fixed today</h5><br>
+            <h5>We estimate your max sales price to be $422,888</h5><br>
+            <h5>These are the most relevant 18 listings within 5 miles of Fremont, CA</h3><br>
+
+        </div><br>
+    
         <table>
             <thead>
+                <th>Img</th>
                 <th>address</th>
                 <th>price</th>
                 <th>Type</th>
@@ -19,6 +34,7 @@
             <tbody>
                 {%for addr in addresses%}
                 <tr>
+                <td><a href="{{addr['web_url']}}"><img src="{{addr['photo_url']}}" alt="Property Image" style="width:25%;"></a></td>
                 <td style="border:2px solid black;" style="margin-right:10px;">{{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}  {{addr['zip_code']}}</td>
                 <td style="border:2px solid green;">{{"${:0,.0f}".format(addr['price'])}}</td>
                 <td style="border:2px solid orange">{{addr['type']}} </td>
@@ -28,6 +44,20 @@
                 {%endfor%}
             </tbody>
         </table>
+
+        Card Group from Bootstrap
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+            {%for addr in addresses%}
+            <div class="col">
+                <div class="card h-100" style="box-shadow:2px 2px 2px black;">
+                    <a href="{{addr['web_url']}}"><img src="{{addr['photo_url']}}" alt="Property Image" style="width:100%;"></a>
+                    <div class="card-body">
+                        <h5 class="prop-addr"><a href=""> {{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}  {{addr['zip_code']}}</a></h5>
+                        <p class="card-text">{{"${:0,.0f}".format(addr['price'])}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
     </div>
 </body>
 </html>
