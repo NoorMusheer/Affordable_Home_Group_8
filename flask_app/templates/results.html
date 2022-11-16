@@ -23,19 +23,42 @@
         <div class="container" , method="POST">
             <div class="row">
                 <div class="column">
-<<<<<<< HEAD
-                    <table bgcolor="#ddd" border="5" style="width:50%">
-=======
                     <table bgcolor="#ddd" border="5" style="width:60%">
->>>>>>> 84dae7cea76edb9f0515a5e37030e922ed230461
-                        <tr>
-                            <th>Name</th>
-                            <th>Est monthly payment</th>
-                            <th>Type</th>
-                            <th>bedroom</th>
-                            <th>sq ft</th>
-                            <th>lot size</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Address</th>
+                                <th>Price</th>
+                                <th>Type</th>
+                                <th>beds</th>
+                                <th>baths</th>
+                                <th>sq ft</th>
+                                <th>lot size</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for addr in addresses%}
+                            <tr>
+                                <td><a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image" style="width:100%;"></a></td>
+                                <td>{{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}  {{addr['zip_code']}} {{addr['zip_code']}}</td>
+                                <td>{{"${:0,.0f}".format(addr['price'])}}</td>
+                                <td>{{addr['type']}}</td>
+                                <td>{{addr['beds']}}</td>
+                                <td>{{addr['baths']}}</td>
+                                <td>{{addr['size']}} sqft.</td>
+                                <td>{addr['lot_size']}</td>
+                                <td>
+                                    {%if addr['favorite'] == 1 %}
+                                    Already Saved
+                                    {% else %}
+                                    <a href="/save/{{addr['id']}}"><button value="">
+                                    Save</button></a>
+                                    {%endif%}
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
                     </table>
                 </div>
             </div>
