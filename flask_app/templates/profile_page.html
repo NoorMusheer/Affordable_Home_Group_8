@@ -33,37 +33,11 @@
 
         <br>
 
-        <h2>Here are some recommendations for you</h2>
+        <h2>Your Saved List</h2>
 
         <br>
 
-        <div class="btn-group" role="toolbar" aria-label="Basic outlined example">
-            <a href="/affordablehomes/home" class="btn btn-secondary">Home </a>
-            <a href="/affordablehomes/condo" class="btn btn-secondary">Condo </a>
-        </div>
-
-        <br>
-        <br>
-
-        Card Group from Bootstrap
-        <div class="row row-cols-1 row-cols-md-5 g-4">
-            {%for addr in addresses%}
-            <div class="col">
-                <div class="card h-100" style="box-shadow:2px 2px 2px black;">
-                    <a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image" style="width:70%;"></a>
-                    </td>
-                    <div class="card-body">
-                        <h5 class="prop-addr"><a href=""> {{addr['street_address']}}, {{addr['city']}},
-                                {{addr['state']}}
-                                {{addr['zip_code']}}</a></h5>
-                        <p class="card-text">{{"${:0,.0f}".format(addr['price'])}}</p>
-                    </div>
-                </div>
-            </div>
-            {%endfor%}
-        </div>
     </div>
-
 
 </body>
 

@@ -40,7 +40,7 @@ def user_parameters():
         property.Property.add_to_properties_list(addr_data)
     addresses = property.Property.get_all_properties()
     print("**** ADDRESSES *** :", addresses)
-    return render_template('results.html', addresses=addresses)
+    return render_template('results_page.html', addresses=addresses)
 
 
 @app.route('/dashboard_practice')
@@ -61,3 +61,8 @@ def home_page():
 @app.route('/affordablehomes/estimate')
 def estimate_page():
     return render_template('estimate_page.html')
+
+
+@app.route('/affordablehomes/profile')
+def profile_page():
+    return render_template('profile_page.html')
