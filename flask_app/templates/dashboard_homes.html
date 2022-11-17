@@ -17,7 +17,7 @@
         <div class="container row">
             <div class="col-8">
                 <h1>Affordable Homes</h1>
-                <!-- <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a> -->
+                <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a>
             </div>
             <div class="col">
                 <div class="container text-end">
@@ -28,27 +28,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col box">
                 Thank you for choosing Affordable Homes to look for your new home. You tell us how much you can afford to pay each month, what your estimated credit score is and what area you want to search in. We will find any listed properties that meet your criteria. 
             </div>
         </div>
         <br>
-<<<<<<< HEAD
         <div>
             <h2 class="text-center">Here are some recommendations for you</h2>
         </div>
         <!-- CARD GROUP STARTS HERE -->
 
         <div class="row row-cols-1 row-cols-md-6 g-4" id="home_card">
-=======
-
-        <h4>Some Featured Homes For You</h4>
-        <!-- CARD GROUP STARTS HERE -->
-        <div class="row row-cols-1 row-cols-md-6 g-4">
->>>>>>> refs/remotes/origin/main
             {%for home in featured_homes%}
             <div class="col">
-                <div class="card h-70" style="width: auto">
+                <div class="card h-70">
                     <img src="{{home['photo']}}" class="card-img-top" alt="featured_property_photo">
                     <div class="card-body">
                         <h5 class="card-title">{{home['address_new']['line']}}, {{home['address_new']['city']}}, {{home['address_new']['state_code']}} {{home['address_new']['postal_code']}}</h5>
