@@ -60,6 +60,6 @@ def condo_page():
     return render_template('dashboard_condos.html')
 
 
-@app.route('/affordablehomes/estimate')
-def estimate_page():
-    return render_template('estimate_page.html')
+# @app.route('/affordablehomes/estimate')
+# def estimate_page():
+#     return render_template('estimate_page.html')
