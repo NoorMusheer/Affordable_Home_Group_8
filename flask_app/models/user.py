@@ -63,6 +63,8 @@ class User:
         """
         results =  connectToMySQL(cls.db).query_db(query, data)
         print("****RESULTSSSS***** ", results)
+        for each in results:
+            print("----****---- IDs----****: ", each['id'])
         return results
 
 

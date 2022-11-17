@@ -60,7 +60,10 @@ def save_prop(id):
     property.Property.favorited(save_data)
     return render_template('results.html')
 
-
+@app.route('/remove_fav/<int:id>')
+def remove_fav(id):
+    property.Property.remove_fav(id)
+    return redirect('/affordablehomes/profile/' + str(session['id']))
 # @app.route('/affordablehomes/condo')
 # def condo_page():
 #     return render_template('dashboard_condos.html')

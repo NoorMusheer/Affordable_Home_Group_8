@@ -58,6 +58,18 @@ class Property:
             """
         return connectToMySQL(cls.db).query_db(query, save_data)
 
+    @classmethod
+    def remove_fav(cls, id):
+        data={
+            "id":id
+        }
+        query = """
+            UPDATE properties
+            SET favorite = 0
+            WHERE id = %(id)s
+        """
+        return connectToMySQL(cls.db).query_db(query, data)
+
     @staticmethod
     def get_listings_by_max_price(home_data_input):
         Property.delete_prev_results()
