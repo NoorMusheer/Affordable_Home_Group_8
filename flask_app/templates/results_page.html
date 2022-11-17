@@ -39,7 +39,7 @@
                 <p>{{"${:0,.0f}".format(parameters['max_monthly'])}} max payment</p><br>
                 <p>{{parameters['avg_rate']}}% is the average rate for a 30 yr fixed with 5% down payment today</p><br>
                 <p>We estimate your max sales price to be {{"${:0,.0f}".format(parameters['max_price'])}}</p><br>
-                <p>These are the most relevant 25 listings within {{parameters['radius']}} miles of {{parameters['city']}}, {{parameters['state']}}</p><br>
+                <p>These are the most relevant 25 listings within {{parameters['radius']}} miles of {{parameters['city'].title()}}, {{parameters['state'].upper()}}</p><br>
 
             </div>
             <br>
@@ -47,8 +47,8 @@
             <table class="table table-hover">
                 <thead>
                     <th>Img</th>
-                    <th>address</th>
-                    <th>price</th>
+                    <th>Address</th>
+                    <th>Price</th>
                     <th>Type</th>
                     <th>Beds</th>
                     <th>Baths</th>
@@ -59,7 +59,7 @@
                     <tr>
                         <td><a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image"
                                     style="width:70%;"></a></td>
-                        <td>{{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}
+                        <td>{{addr['street_address']}}, {{addr['city'].title()}}, {{addr['state'].upper()}}
                             {{addr['zip_code']}}</td>
                         <td>{{"${:0,.0f}".format(addr['price'])}}</td>
                         <td>{{addr['type']}}</td>
