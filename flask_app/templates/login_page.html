@@ -16,7 +16,7 @@
             <h1>Affordable Homes</h1>
             <h2>Looking for a new Home?</h2>
         </div>
-        <div class="col" id="login_box">
+        <div class="col login_box">
             <form action="/logged_in" method="POST">
                 {% with messages = get_flashed_messages(category_filter=["login"]) %}
                     {% if messages %}
@@ -26,22 +26,29 @@
                     {% endif %}
                 {% endwith %}
                 <div class="row mb-3">
-                    <label for="email" class="col-sm-3 col-form-lable">Email/User ID:</label>
+                    <label for="email" class="col-4 col-form-lable">Email/User ID:</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" name="email" id="email">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="password" class="col-sm-3 col-form-lable">Password:</label>
+                    <label for="password" class="col-4 col-form-lable">Password:</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                 </div>
                 <div class="d-grid gap-2">
-                    <input type="submit" value="Login" class="offset-btn">
+                    <input type="submit" value="Login" class="btn btn-secondary">
                 </div>
             </form>
-                <a href="/reg_page" class="float-end">Sign Up</a>
+            <div class="row">
+                <div class="col">
+                    <a href="/reg_page">
+                        <button value="Sign_Up" class="btn btn-secondary">Sign Up</button>
+                    </a>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>
