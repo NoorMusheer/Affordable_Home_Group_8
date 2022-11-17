@@ -27,27 +27,26 @@
         <div class="container row">
             <div class="col-8">
                 <h1>Affordable Homes</h1>
-                <a href="/dashboard" class="btn btn-outline-secondary">My Profile</a>
             </div>
 
 
             <div class="col">
                 <div class="container">
-                    <h2>Welcome, {{session['first_name']}}</h2>
+
                     <a href="/affordablehomes/home" class="btn btn-outline-secondary">Home</a>
                     <a href="/logout" class="btn btn-outline-secondary">Log Out</a>
+
 
                 </div>
             </div>
         </div>
-        <br>
-        <br>
+        >>>>>>> 84dae7cea76edb9f0515a5e37030e922ed230461
 
         <p>Something To call........</p>
         <p class="box">Here you can search for homes that fall within your monthly budjet.Just fill in some <br>
             information below and we will send you results that we think you might qulify to purchase.</p>
         <div class="col">
-            <form action="/affordablehomes/estimate/results" method="POST">
+            <form action="/...?" method="POST">
                 {% with messages = get_flashed_messages(category_filter=["register"]) %}
                 {% if messages %}
                 {% for message in messages %}
@@ -56,8 +55,8 @@
                 {% endif %}
                 {% endwith %}
                 <div class="container">
-                    <label for="down_payment" class="label-col">Your Total Down Payment</label>
-                    <input type="number" name="down_payment" id="down_payment">
+                    <label for="total" class="label-col">Your Total Down Payment</label>
+                    <input type="number" name="total" id="total">
                 </div>
                 <div class="container">
                     <label for="score" class="label-col">Your Estimate Credit Score</label>
@@ -65,23 +64,11 @@
                     <p><a href="...?">Click Here</a>to learn more about qualifying credit scores</p>
                 </div>
                 <div class="container">
-                    <label for="max_monthly" class="label-col">Estimate Monthly House Allowance</label>
-                    <input type="number" name="max_monthly" id="max_monthly">
+                    <label for="monthly" class="label-col">Estimate Monthly House Allowance</label>
+                    <input type="number" name="monthly" id="monthly">
                     <p>include Principle, Interest, Property Tax, Insurance and HOA costs</p>
                 </div>
-                <div class="form-input">
-                    <label for="">City</label>
-                    <input type="text" name="city">
-                </div>
-                <div class="form-input">
-                    <label for="">State</label>
-                    <input type="text" name="state">
-                </div>
-                <div class="form-input">
-                    <label for="">Search Radius</label>
-                    <input type="number" name="radius">
-                </div>
-                <input type="submit" value="Submit" class="offset-btn">
+                <a href="/affordablehomes/estimate/results" class="btn btn-outline-secondary">Submit</a>
             </form>
         </div>
         <div class="box">

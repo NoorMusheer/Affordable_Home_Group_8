@@ -47,8 +47,22 @@ def user_parameters():
 def user_dashboard():
     return render_template('practice_user_input.html')
 
-@app.route('/save/<int:id>')
-def save_prop(id):
-    property.Property.favorited(id)
-    addresses = property.Property.get_all_properties()
-    return render_template('results.html', addresses = addresses)
+
+@app.route('/affordablehomes/condo')
+def condo_page():
+    return render_template('dashboard_condos.html')
+
+
+@app.route('/affordablehomes/home')
+def home_page():
+    return render_template('dashboard_homes.html')
+
+
+@app.route('/affordablehomes/estimate')
+def estimate_page():
+    return render_template('estimate_page.html')
+
+
+@app.route('/affordablehomes/profile')
+def profile_page():
+    return render_template('profile_page.html')
