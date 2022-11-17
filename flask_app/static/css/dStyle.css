@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 20px;
+}
+
+body {
+    margin: 30px;
+    padding: 30px;
+    max-width: auto;
+    max-height: auto;
+    /* background-color: rgb(244, 244, 244); */
+    
+}
+
+.main-row{
+    margin: 30px;
+    padding: 30px;
+}
+
+#login_page{
+    max-width: auto;
+    height: auto;
+    /* border: 1px groove rgb(0, 145, 255); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    color: rgb(18, 57, 66);
+}
+
+#sign_up{
+    max-width: auto;
+    height: auto;
+    background-image: url(../img/keys.jpg);
+    color: rgb(255, 255, 255);
+    border: 1px groove rgb(113, 181, 233);
+    background-size: cover;
+    background-position: center;
+}
+
+#small_c{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+h1,h2, #login_box{
+    color: rgb(18, 57, 66);
+}
+
+#login_box{
+    padding: 20px;
+}
+
+.form-input{
+    margin: 0;
+    padding: 0;
+}

@@ -22,18 +22,18 @@ body {
 }
 
 #sign_up{
-    max-width: 600px;
+    max-width: 650px;
     height: 550px;
-    background-image: url(../img/kegs.jpg);
+    background-image: url(../img/keys.jpg);
+    color: rgb(255, 255, 255);
     border: 1px groove rgb(10, 103, 175);
     background-size: cover;
     background-position: center;
 }
 
 #small_c{
-    margin: 0;
+    margin-right: 0;
     border: 0;
-    padding: 0;
 }
 
 h1,h2, #login_box{

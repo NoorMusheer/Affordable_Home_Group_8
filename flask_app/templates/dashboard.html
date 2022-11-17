@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dStyle.css') }}">
     <title>Dashboard</title>
     <style>
     </style>
@@ -23,50 +23,43 @@
 </style>
 
 <body>
-    <div class="container">
-        <div class="header-row text-center">
-            <h1 class="nav-title">Afordable Homes</h1>
-            <h3>Welcome {{session['first_name']}}</h3>
-            <h4>Dashboard</h4>
-        </div>
-        <div class="nav-row">
-            <a href="/logout">Logout</a>
+    <div class="container fw-bold font-monospace fs-6" id="login_page">
+        <div>
+            <div class="float-end">
+                <p><a href="/logout">Logout</a></p>
+            </div>
+            <h1 class="nav-title text-begin">Afordable Homes</h1><p>Welcome, {{session['first_name']}}</p>
         </div>
         <br>
         <div class="main-row">
             <form action="/params" method="POST">
-                <div class="form-input">
-                    <label for="">Credit Score: </label>
-                    <input type="number" name="score">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">Credit Score: </label>
+                    <input type="number" class="form-control" name="score">
                 </div>
-                <div class="form-input">
-                    <label for="">Max Monthly Payment:</label>
-                    <input type="number" name="max_monthly">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">Max Monthly Payment:</label>
+                    <input type="number" class="form-control" name="max_monthly">
                 </div>
-                <div class="form-input">
-                    <label for="">Down Payment:</label>
-                    <input type="number" name="down_payment">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">Down Payment:</label>
+                    <input type="number" class="form-control" name="down_payment">
                 </div>
-                <div class="form-input">
-                    <label for="">City:</label>
-                    <input type="text" name="city">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">City:</label>
+                    <input type="text" class="form-control" name="city">
                 </div>
-                <div class="form-input">
-                    <label for="">State:</label>
-                    <input type="text" name="state">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">State:</label>
+                    <input type="text" class="form-control" name="state">
                 </div>
-                <div class="form-input">
-                    <label for="">Search Radius:</label>
-                    <input type="number" name="radius">
+                <div class="form-input row mb-3">
+                    <label for="" class="col-sm-3 col-form-lable">Search Radius:</label>
+                    <input type="number" class="form-control" name="radius">
                 </div>
                 <input type="submit" value="Get Listings">
             </form>
         </div>
-
-
-
-
-
     </div>
 </body>
 
