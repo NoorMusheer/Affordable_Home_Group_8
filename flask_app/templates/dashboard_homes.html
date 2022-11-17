@@ -19,23 +19,23 @@
                 <h1>Affordable Homes</h1>
                 <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a>
             </div>
-
-
             <div class="col">
                 <div class="container">
                     <h2>Welcome, {{session['first_name']}}</h2>
                     <a href="/affordablehomes/estimate" class="btn btn-outline-secondary">Estimate Now!</a>
                     <a href="/logout" class="btn btn-outline-secondary">Log Out</a>
-
                 </div>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col">
+                Thank you for choosing Affordable Homes to look for your new home. You tell us how much you can afford to pay each month, what your estimated credit score is and what area you want to search in. We will find any listed properties that meet your criteria. 
+            </div>
+        </div>
         <br>
 
-        <h2>Here are some recommendations for you</h2>
+        <h4>Some Featured Homes For You</h4>
         <!-- CARD GROUP STARTS HERE -->
-
         <div class="row row-cols-1 row-cols-md-6 g-4">
             {%for home in featured_homes%}
             <div class="col">

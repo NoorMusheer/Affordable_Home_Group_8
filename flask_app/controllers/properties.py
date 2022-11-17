@@ -40,7 +40,15 @@ def user_parameters():
         }
         property.Property.add_to_properties_list(addr_data)
     addresses = property.Property.get_all_properties()
-    return render_template('results_page.html', addresses=addresses)
+    parameters ={
+        "avg_rate":((avg_rate)*100),
+        "max_price":max_price,
+        "max_monthly":int(request.form['max_monthly']),
+        "radius":request.form['radius'],
+        "city":frmtd_city,
+        "state":request.form['state']
+    }
+    return render_template('results_page.html', addresses=addresses, parameters = parameters)
 
 
 # @app.route('/dashboard_practice')
@@ -56,12 +64,7 @@ def user_parameters():
 @app.route('/affordablehomes/home')
 def home_page():
     featured_homes = api_requests.get_featured_homes()
-    return render_template('practice_dashboard_homes.html', featured_homes = featured_homes)
-
-
-# @app.route('/affordablehomes/estimate')
-# def estimate_page():
-#     return render_template('estimate_page.html')
+    return render_template('dashboard_homes.html', featured_homes = featured_homes)
 
 
 # @app.route('/affordablehomes/profile')

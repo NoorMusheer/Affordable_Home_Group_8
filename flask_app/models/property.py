@@ -70,7 +70,7 @@ class Property:
             'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
         }
         conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) + "&city=" + str(
-            home_data_input['city']) + "&offset=0&limit=4&sort=relevance&radius=" + str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
+            home_data_input['city']) + "&offset=0&limit=25&sort=relevance&radius=" + str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
 
         res = conn.getresponse()
         data = res.read()
