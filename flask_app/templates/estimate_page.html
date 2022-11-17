@@ -52,30 +52,30 @@
                     <span>What area are your numbers like? </span>
                     <div class="container input-row">
                         <label for="down_payment" class="label-col">Your Total Down Payment: $</label>
-                        <input type="number" name="down_payment" id="down_payment" placeholder="no commas or decimals">
+                        <input type="number" name="down_payment" id="down_payment" value = "{{user_info['down_payment']}}" placeholder="no commas or decimals">
                     </div>
                     <div class="container input-row">
                         <label for="score" class="label-col">Your Estimated Credit Score:</label>
-                        <input type="number" name="score" id="score" placeholder="between: 450 - 850">
+                        <input type="number" name="score" id="score" value = "{{user_info['score']}}" placeholder="between 450-850">
                         <a href="https://www.creditkarma.com">Click Here</a> to learn more about your credit score. 
                     </div>
                     <div class="container input-row">
                         <label for="max_monthly" class="label-col">What is the maximum that you would feel comfortable spending on your mortgage each month?: </label>
-                        $<input type="number" name="max_monthly" id="max_monthly" placeholder="no commas or decimals">
+                        $<input type="number" name="max_monthly" id="max_monthly" value="{{user_info['monthly_max']}}" placeholder="no commas or decimals">
                         <p style="font-size:12px; color:gray;">(Include Principle, Interest, Tax, Insurance and HOA costs)</p>
                     </div>
                     <span>What area are you interested in? </span>
                     <div class="container input-row">
                         <label for="">City:</label>
-                        <input type="text" name="city">
+                        <input type="text" name="city" value="{{user_info['city']}}">
                     </div>
                     <div class="container input-row">
                         <label for="">State:</label>
-                        <input type="text" name="state">
+                        <input type="text" name="state" value="{{user_info['state']}}" >
                     </div>
                     <div class="container input-row">
                         <label for="">Search Radius: </label>
-                        <input type="number" name="radius" placeholder="in miles">
+                        <input type="number" name="radius" placeholder="in miles" value="user_info['radius']}}">
                     </div>
                     <div class="input-row"><input type="submit" value="Find Me Some Homes!" class="btn btn-outline-secondary"></div>
                 </form>

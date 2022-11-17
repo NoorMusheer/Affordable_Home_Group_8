@@ -12,7 +12,7 @@ conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
 
 def get_featured_homes():
     zip = get_random_zip()
-    conn.request("GET", "/properties/list-for-sale?state_code=_&city=_&offset=0&limit=6&postal_code=" + str(zip) +"&sort=relevance&radius=50", headers=headers)
+    conn.request("GET", "/properties/list-for-sale?state_code=_&city=_&offset=0&limit=20&postal_code=" + str(zip) +"&sort=relevance&radius=50", headers=headers)
     res = conn.getresponse()
     data = res.read()
     parse_json = json.loads(data)

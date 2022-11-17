@@ -21,11 +21,14 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
-        self.salary = data['salary']
-        self.created_at = data['created_at']
-        self.updated_at = data['updated_at']
+        self.monthly_max = data['monthly_max']
         self.score = data['score']
         self.down_payment = data['down_payment']
+        self.city = data['city']
+        self.state = data['state']
+        self.radius = data['radius']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
 
     @classmethod
     def create_user(cls, data):
@@ -51,6 +54,18 @@ class User:
             return result[0]
 
     @classmethod
+    def get_user_by_id(cls, id):
+        data={
+            "id":id
+        }
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result == ():
+            return False
+        else:
+            return result[0]
+
+    @classmethod
     def get_favorited_by_user(cls,id):
         data={
             "id": id
@@ -68,20 +83,36 @@ class User:
     def update_user(cls, user_input):
         query ="""
             UPDATE users
-            SET score = %(score)s, down_payment = %(down_payment)s, monthly_max = %(P)s, city=%(city)s, state = %(state)s
+            SET score = %(score)s, down_payment = %(down_payment)s, monthly_max = %(P)s, city=%(city)s, state = %(state)s, radius = %(radius)s
             WHERE id = %(id)s
         """
         return connectToMySQL(cls.db).query_db(query, user_input)
 
     @staticmethod
-    def validate_reg(data, user_exists, pw_check):
+    def validate_registration(form_data):
         is_valid = True
-        if user_exists:
-            flash(
-                "**This email is already registered. Please login or create a new account", "register")
+        if len(form_data["first_name"]) < 3:
+            flash("First name must be 3 or more character", "register")
             is_valid = False
-        if (pw_check['password'] != pw_check['re_enter_password']):
-            flash("**Passwords do not match. Please try again. ", "register")
+        if len(form_data["last_name"]) < 3:
+            flash("Last name must be 3 or more character", "register")
+            is_valid = False
+        if not EMAIL_REGEX.match(form_data["email"]): 
+            flash("Invalid email address!")
+            is_valid = False
+        data = {
+            "email" : form_data["email"]
+        }
+        query = "SELECT * FROM users WHERE email = %(email)s ;"
+        result = connectToMySQL("users_properties_schema").query_db(query, form_data)
+        if len(result) >= 1:
+            flash("Email already taken","register")
+            is_valid = False
+        if len(form_data["password"]) < 8:
+            flash("Password must be 8 or more character", "register")
+            is_valid = False
+        if form_data["password"] !=  form_data["re_enter_password"]:
+            flash("Password don't agree", "register")
             is_valid = False
         return is_valid
 

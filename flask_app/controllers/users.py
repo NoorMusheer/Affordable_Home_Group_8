@@ -20,24 +20,37 @@ def logout():
 def send_to_reg_page():
     return render_template('register_page.html')
 
-
-@app.route('/register', methods=['POST'])
+@app.route("/register", methods = ["POST"])
 def register_user():
+    if not user.User.validate_registration(request.form):
+        return redirect("/reg_page")
+
     data = {
-        "first_name": request.form['first_name'],
-        "last_name": request.form['last_name'],
-        "email": request.form['email'],
-        "password": bcrypt.generate_password_hash(request.form['password']),
+        "first_name" : request.form["first_name"],
+        "last_name" : request.form["last_name"],
+        "email" : request.form["email"],
+        "password" : bcrypt.generate_password_hash(request.form["password"]), 
     }
-    pw_check = {
-        "password": request.form['password'],
-        "re_enter_password": request.form['re_enter_password']
-    }
-    user_exists = user.User.get_user_by_email(data)
-    if not user.User.validate_reg(data, user_exists, pw_check):
-        return redirect('/reg_page')
-    user.User.create_user(data)
-    return redirect('/')
+    session["buyer_id"] = user.User.create_user(data) 
+    return redirect("/")
+
+# @app.route('/register', methods=['POST'])
+# def register_user():
+#     data = {
+#         "first_name": request.form['first_name'],
+#         "last_name": request.form['last_name'],
+#         "email": request.form['email'],
+#         "password": bcrypt.generate_password_hash(request.form['password']),
+#     }
+#     pw_check = {
+#         "password": request.form['password'],
+#         "re_enter_password": request.form['re_enter_password']
+#     }
+#     user_exists = user.User.get_user_by_email(data)
+#     if not user.User.validate_reg(data, user_exists, pw_check):
+#         return redirect('/reg_page')
+#     user.User.create_user(data)
+#     return redirect('/')
 
 
 @app.route('/logged_in', methods=['POST'])
@@ -65,4 +78,5 @@ def condo_page():
 
 @app.route('/affordablehomes/estimate')
 def estimate_page():
-    return render_template('estimate_page.html')
+    user_info = user.User.get_user_by_id(session['id'])
+    return render_template('estimate_page.html', user_info = user_info)

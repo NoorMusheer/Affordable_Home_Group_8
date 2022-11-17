@@ -67,7 +67,7 @@ h1,h2{
     margin-bottom:10px;
 }
 
-.card{
+.card, .dsh-btn{
     box-shadow:2px 2px 2px slategray;
 }
 
