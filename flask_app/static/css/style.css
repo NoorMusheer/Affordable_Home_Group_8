@@ -2,6 +2,9 @@
     padding: 0;
     margin: auto;
 }
+.container{
+    width:95%;
+}
 
 body {
     margin: 30px;
