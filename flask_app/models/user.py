@@ -81,7 +81,7 @@ class User:
     @staticmethod
     def get_max_price(data):
         n = 360
-        r = (avg_rate/12)
+        r = ((avg_rate/12)+.01)
         P = int(data['P'])
         dn_pmt = int(data['down_payment'])
         max_loan = P*(((1+r)**n)-1) // (r*((1 + r)**n))

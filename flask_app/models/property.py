@@ -50,23 +50,20 @@ class Property:
         return connectToMySQL(cls.db).query_db(query)
 
     @classmethod
-    def favorited(cls, id):
-        data = {
-            "id": id
-        }
+    def favorited(cls, save_data):
         query = """
             UPDATE properties
-            SET favorite = 1
-            WHERE id = %(id)s;
+            SET favorite = 1, buyer_id = %(user_id)s
+            WHERE id = %(prop_id)s;
             """
-        return connectToMySQL(cls.db).query_db(query, data)
+        return connectToMySQL(cls.db).query_db(query, save_data)
 
     @staticmethod
     def get_listings_by_max_price(home_data_input):
         Property.delete_prev_results()
         conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
         headers = {
-            'X-RapidAPI-Key': "",
+            'X-RapidAPI-Key': "c05b87795bmsh798a906721c803ep1bb0e9jsn76bc358834d6",
             'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
         }
         conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) + "&city=" + str(

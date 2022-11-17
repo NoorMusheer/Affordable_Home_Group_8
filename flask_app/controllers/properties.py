@@ -41,7 +41,7 @@ def user_parameters():
         property.Property.add_to_properties_list(addr_data)
     addresses = property.Property.get_all_properties()
     parameters ={
-        "avg_rate":((avg_rate)*100),
+        "avg_rate":(((avg_rate)*100)+1),
         "max_price":max_price,
         "max_monthly":int(request.form['max_monthly']),
         "radius":request.form['radius'],
@@ -51,9 +51,13 @@ def user_parameters():
     return render_template('results_page.html', addresses=addresses, parameters = parameters)
 
 
-# @app.route('/dashboard_practice')
-# def user_dashboard():
-#     return render_template('practice_user_input.html')
+@app.route('/save/<int:id>')
+def save_prop(id):
+    save_data = {
+        "prop_id":id,
+        "user_id":session['id']
+    }
+    return True
 
 
 # @app.route('/affordablehomes/condo')

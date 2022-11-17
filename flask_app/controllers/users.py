@@ -51,7 +51,6 @@ def logged_in_user():
         return redirect('/')
     session['id'] = user_exists['id']
     session['first_name'] = user_exists['first_name']
-    print("First NAME : ", session['first_name'])
     return redirect('/affordablehomes/home')
 
 
