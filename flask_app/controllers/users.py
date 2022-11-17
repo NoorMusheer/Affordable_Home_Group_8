@@ -53,6 +53,10 @@ def logged_in_user():
     session['first_name'] = user_exists['first_name']
     return redirect('/affordablehomes/home')
 
+@app.route('/affordablehomes/profile/<int:id>')
+def profile_page(id):
+    favorites = user.User.get_favorited_by_user(id)
+    return render_template('profile_page.html', favorites = favorites)
 
 @app.route('/affordablehomes/condo')
 def condo_page():

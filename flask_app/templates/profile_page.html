@@ -17,7 +17,7 @@
         <div class="container row">
             <div class="col-8">
                 <h1>Affordable Homes</h1>
-                <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a>
+                <a href="/affordablehomes/profile/{{session['id']}}" class="btn btn-outline-secondary">My Profile!</a>
             </div>
 
 
@@ -45,19 +45,19 @@
                     <th>Lot size</th>
                 </thead>
                 <tbody>
-                    {%for addr in addresses%}
+                    {%for fav in favorites%}
                     <tr>
-                        <td><a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image"
+                        <td><a href="{{fav['web']}}"><img src="{{fav['photo']}}" alt="Property Image"
                                     style="width:70%;"></a></td>
-                        <td>{{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}
-                            {{addr['zip_code']}}</td>
+                        <td>{{fav['street_address']}}, {{fav['city']}}, {{fav['state']}}
+                            {{fav['zip_code']}}</td>
                         <td>{{"${:0,.0f}".format(addr['price'])}}</td>
-                        <td>{{addr['type']}}</td>
-                        <td>{{addr['beds']}}</td>
-                        <td>{{addr['baths']}}</td>
-                        <td>{{addr['size']}} sqft.</td>
+                        <td>{{fav['type']}}</td>
+                        <td>{{fav['beds']}}</td>
+                        <td>{{fav['baths']}}</td>
+                        <td>{{fav['size']}} sqft.</td>
                         <td>
-                            {%if addr['favorite'] == 1 %}
+                            {%if fav['favorite'] == 1 %}
                             Already Saved
                             {% else %}
                             <a href="/save/{{addr['id']}}"><button value="">

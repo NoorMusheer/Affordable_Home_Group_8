@@ -49,11 +49,21 @@ class User:
             return False
         else:
             return result[0]
-        # user_by_email = []
-        # print ("---***GET USER BY EMAIL RESULT :", user_by_email)
-        # for each in result:
-        #     user_by_email.append(each)
-        # return user_by_email
+
+    @classmethod
+    def get_favorited_by_user(cls,id):
+        query = """
+        SELECT * FROM users 
+        LEFT JOIN properties 
+        ON users.id = properties.buyer_id
+        WHERE favorite = 1;
+        """
+        favorites = []
+        results =  connectToMySQL(cls.db).query_db(query, id)
+        for fav in results:
+            favorites.append(fav)
+        return favorites
+
 
     @staticmethod
     def validate_reg(data, user_exists, pw_check):
