@@ -55,7 +55,6 @@ def logged_in_user():
 
 @app.route('/affordablehomes/profile/<int:id>')
 def profile_page(id):
-    print ("***___ID ___***", id)
     favorites = user.User.get_favorited_by_user(id)
     return render_template('profile_page.html', favorites = favorites)
 

@@ -58,8 +58,25 @@ def user_parameters():
         "city":frmtd_city,
         "state":request.form['state']
     }
+    session['p_max_price'] = max_price
+    session['p_max_monthly'] = request.form['max_monthly']
+    session['p_radius']=request.form['radius']
+    session['p_frmtd_city'] = frmtd_city
+    session['p_state']=request.form['state']
     return render_template('results_page.html', addresses=addresses, parameters = parameters)
 
+@app.route('/results')
+def show_all_results():
+    parameters = {
+        "avg_rate" :(((avg_rate)*100)+1),
+        "max_price" : session['p_max_price'],
+        "max_monthly" :int(session['p_max_monthly']),
+        "radius" : session['p_radius'],
+        "city" : session['p_frmtd_city'],
+        "state" : session['p_state']
+    }
+    addresses = property.Property.get_all_properties()
+    return render_template('results_page.html', addresses = addresses, parameters = parameters)
 
 @app.route('/save/<int:id>')
 def save_prop(id):
@@ -68,15 +85,12 @@ def save_prop(id):
         "user_id":session['id']
     }
     property.Property.favorited(save_data)
-    return render_template('results.html')
+    return redirect('/results')
 
 @app.route('/remove_fav/<int:id>')
 def remove_fav(id):
     property.Property.remove_fav(id)
     return redirect('/affordablehomes/profile/' + str(session['id']))
-# @app.route('/affordablehomes/condo')
-# def condo_page():
-#     return render_template('dashboard_condos.html')
 
 
 @app.route('/affordablehomes/home')

@@ -66,18 +66,15 @@
                         <td>{{addr['beds']}}</td>
                         <td>{{addr['baths']}}</td>
                         <td>{{addr['size']}} sqft.</td>
-                        <td>
-                            {%if addr['favorite'] == 1 %}
-                            Already Saved
-                            {% else %}
+                        <td id="save-btn">
                             <a href="/save/{{addr['id']}}"><button value="">
-                                    Save</button></a>
-                            {%endif%}
+                            Save</button></a>
                         </td>
                     </tr>
                     {%endfor%}
                 </tbody>
             </table>
+<script src="/flask_app/static/js/script.js"></script>
 </body>
 
 </html>
