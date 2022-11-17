@@ -43,9 +43,9 @@ def user_parameters():
     return render_template('results_page.html', addresses=addresses)
 
 
-@app.route('/dashboard_practice')
-def user_dashboard():
-    return render_template('practice_user_input.html')
+# @app.route('/dashboard_practice')
+# def user_dashboard():
+#     return render_template('practice_user_input.html')
 
 
 # @app.route('/condo')
@@ -63,9 +63,9 @@ def home_page():
     return render_template('practice_dashboard_homes.html', featured_homes = featured_homes)
 
 
-@app.route('/affordablehomes/estimate')
-def estimate_page():
-    return render_template('estimate_page.html')
+# @app.route('/affordablehomes/estimate')
+# def estimate_page():
+#     return render_template('estimate_page.html')
 
 
 # @app.route('/affordablehomes/profile')
