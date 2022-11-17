@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dStyle.css') }}"> -->
     <title>Home</title>
 </head>
 
@@ -17,12 +17,12 @@
         <div class="container row">
             <div class="col-8">
                 <h1>Affordable Homes</h1>
-                <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a>
+                <!-- <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a> -->
             </div>
 
 
             <div class="col">
-                <div class="container">
+                <div class="container text-end">
                     <h2>Welcome, {{session['first_name']}}</h2>
                     <a href="/affordablehomes/estimate" class="btn btn-outline-secondary">Estimate Now!</a>
                     <a href="/logout" class="btn btn-outline-secondary">Log Out</a>
@@ -32,14 +32,15 @@
         </div>
 
         <br>
-
-        <h2>Here are some recommendations for you</h2>
+        <div>
+            <h2 class="text-center">Here are some recommendations for you</h2>
+        </div>
         <!-- CARD GROUP STARTS HERE -->
 
-        <div class="row row-cols-1 row-cols-md-6 g-4">
+        <div class="row row-cols-1 row-cols-md-6 g-4" id="home_card">
             {%for home in featured_homes%}
             <div class="col">
-                <div class="card h-70">
+                <div class="card h-70" style="width: auto">
                     <img src="{{home['photo']}}" class="card-img-top" alt="featured_property_photo">
                     <div class="card-body">
                         <h5 class="card-title">{{home['address_new']['line']}}, {{home['address_new']['city']}}, {{home['address_new']['state_code']}} {{home['address_new']['postal_code']}}</h5>
@@ -57,10 +58,10 @@
         <!-- CARD GROUP ENDS HERE.  -->
         <br>
 
-        <div class="btn-group" role="toolbar" aria-label="Basic outlined example">
+        <!-- <div class="btn-group" role="toolbar" aria-label="Basic outlined example">
             <a href="/affordablehomes/home" class="btn btn-secondary">Home </a>
             <a href="/affordablehomes/condo" class="btn btn-secondary">Condo </a>
-        </div>
+        </div> -->
 
         <br>
         <br>

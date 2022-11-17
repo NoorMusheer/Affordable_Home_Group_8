@@ -54,12 +54,3 @@ def logged_in_user():
     print("First NAME : ", session['first_name'])
     return redirect('/affordablehomes/home')
 
-
-@app.route('/affordablehomes/condo')
-def condo_page():
-    return render_template('dashboard_condos.html')
-
-
-# @app.route('/affordablehomes/estimate')
-# def estimate_page():
-#     return render_template('estimate_page.html')

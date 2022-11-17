@@ -60,12 +60,12 @@ def user_parameters():
 @app.route('/affordablehomes/home')
 def home_page():
     featured_homes = api_requests.get_featured_homes()
-    return render_template('practice_dashboard_homes.html', featured_homes = featured_homes)
+    return render_template('dashboard_homes.html', featured_homes = featured_homes)
 
 
-# @app.route('/affordablehomes/estimate')
-# def estimate_page():
-#     return render_template('estimate_page.html')
+@app.route('/affordablehomes/estimate')
+def estimate_page():
+    return render_template('estimate_page.html')
 
 
 # @app.route('/affordablehomes/profile')
