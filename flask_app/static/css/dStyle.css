@@ -1,32 +1,37 @@
-*{
+/* *{
     padding: 0;
     margin: 20px;
-}
+} */
 
 body {
     margin: 30px;
     padding: 30px;
     max-width: auto;
     max-height: auto;
-    /* background-color: rgb(244, 244, 244); */
+    background-color: rgb(244, 244, 244);
     
 }
 
-.main-row{
-    margin: 30px;
-    padding: 30px;
+#home_card{
+    margin-top: 20px;
+    padding: 10px;
 }
 
-#login_page{
+/* .main-row{
+    margin: 30px;
+    padding: 30px;
+} */
+
+/* #login_page{
     max-width: auto;
-    height: auto;
+    height: auto; */
     /* border: 1px groove rgb(0, 145, 255); */
     /* background-size: cover; */
     /* background-position: center; */
-    color: rgb(18, 57, 66);
-}
+    /* color: rgb(18, 57, 66);
+} */
 
-#sign_up{
+/* #sign_up{
     max-width: auto;
     height: auto;
     background-image: url(../img/keys.jpg);
@@ -53,4 +58,4 @@ h1,h2, #login_box{
 .form-input{
     margin: 0;
     padding: 0;
-}
+} */
