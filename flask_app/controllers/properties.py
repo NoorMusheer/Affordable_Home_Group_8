@@ -21,6 +21,16 @@ def user_parameters():
         "radius": request.form['radius'],
         "max_price": max_price
     }
+    user_input = {
+        "id":session['id'],
+        "score": request.form['score'],
+        "down_payment": request.form['down_payment'],
+        "P": request.form['max_monthly'],
+        "city": frmtd_city,
+        "state": request.form['state'],
+        "radius": request.form['radius']
+    }
+    user.User.update_user(user_input)
     prop_data = property.Property.get_listings_by_max_price(home_data_input)
     print("***PROP DATA*** : ", prop_data)
     for each in prop_data:

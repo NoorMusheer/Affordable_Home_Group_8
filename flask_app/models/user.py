@@ -62,11 +62,16 @@ class User:
             WHERE users.id = %(id)s
         """
         results =  connectToMySQL(cls.db).query_db(query, data)
-        print("****RESULTSSSS***** ", results)
-        for each in results:
-            print("----****---- IDs----****: ", each['id'])
         return results
 
+    @classmethod
+    def update_user(cls, user_input):
+        query ="""
+            UPDATE users
+            SET score = %(score)s, down_payment = %(down_payment)s, monthly_max = %(P)s, city=%(city)s, state = %(state)s
+            WHERE id = %(id)s
+        """
+        return connectToMySQL(cls.db).query_db(query, user_input)
 
     @staticmethod
     def validate_reg(data, user_exists, pw_check):

@@ -33,13 +33,6 @@ body {
     background-position: center;
 }
 
-#est_page ::before {
-    background-image: url(../img/bkgrnd_home.png);
-    opacity: 0.6;
-    
-
-}
-
 #small_c{
     margin: 0;
     border: 0;
