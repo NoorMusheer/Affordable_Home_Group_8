@@ -33,6 +33,13 @@ body {
     background-position: center;
 }
 
+#est_page ::before {
+    background-image: url(../img/bkgrnd_home.png);
+    opacity: 0.6;
+    
+
+}
+
 #small_c{
     margin: 0;
     border: 0;
@@ -58,10 +65,14 @@ h1,h2, #login_box{
     padding:3px;
 }
 
-.row{
-    margin-bottom:3%;
+.row, .input-row{
+    margin-bottom:10px;
 }
 
 .card{
     box-shadow:2px 2px 2px slategray;
+}
+
+span{
+    font-weight: bold;
 }

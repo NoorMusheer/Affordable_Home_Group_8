@@ -17,7 +17,7 @@
     }
 </style>
 
-<body>
+<body id="est_page">
     <div class="container">
         <div class="container row">
             <div class="col-8">
@@ -38,49 +38,53 @@
         <br>
         <br>
 
-        <h5 class="box-around">Here you can search for homes that fall within your monthly budget.Just fill in some information below and we will send you results that we think you might qulify to purchase.</h5>
+        <h5 class="box-around">Here you can search for homes that fall within your monthly budget.  Just fill in some information below and we will send you results that we think you might qulify to purchase.</h5>
         <div class="col">
-            <form action="/affordablehomes/estimate/results" method="POST">
-                {% with messages = get_flashed_messages(category_filter=["register"]) %}
-                {% if messages %}
-                {% for message in messages %}
-                <p>{{message}}</p>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-                <div class="container">
-                    <label for="down_payment" class="label-col">Your Total Down Payment: $</label>
-                    <input type="number" name="down_payment" id="down_payment">
-                </div>
-                <div class="container">
-                    <label for="score" class="label-col">Your Estimate Credit Score</label>
-                    <input type="number" name="score" id="score">
-                    <p><a href="https://www.creditkarma.com">Click Here</a>to learn more about qualifying credit scores</p>
-                </div>
-                <div class="container">
-                    <label for="max_monthly" class="label-col">Estimate Monthly House Allowance</label>
-                    <input type="number" name="max_monthly" id="max_monthly">
-                    <p>include Principle, Interest, Property Tax, Insurance and HOA costs</p>
-                </div>
-                <div class="form-input">
-                    <label for="">City</label>
-                    <input type="text" name="city">
-                </div>
-                <div class="form-input">
-                    <label for="">State</label>
-                    <input type="text" name="state">
-                </div>
-                <div class="form-input">
-                    <label for="">Search Radius</label>
-                    <input type="number" name="radius">
-                </div>
-                <input type="submit" value="Submit" class="offset-btn">
-            </form>
+            <div class="row">
+                <form action="/affordablehomes/estimate/results" method="POST">
+                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <span>What area are your numbers like? </span>
+                    <div class="container input-row">
+                        <label for="down_payment" class="label-col">Your Total Down Payment: $</label>
+                        <input type="number" name="down_payment" id="down_payment" placeholder="no commas or decimals">
+                    </div>
+                    <div class="container input-row">
+                        <label for="score" class="label-col">Your Estimated Credit Score:</label>
+                        <input type="number" name="score" id="score" placeholder="between: 450 - 850">
+                        <a href="https://www.creditkarma.com">Click Here</a> to learn more about your credit score. 
+                    </div>
+                    <div class="container input-row">
+                        <label for="max_monthly" class="label-col">What is the maximum that you would feel comfortable spending on your mortgage each month?: </label>
+                        $<input type="number" name="max_monthly" id="max_monthly" placeholder="no commas or decimals">
+                        <p style="font-size:12px; color:gray;">(Include Principle, Interest, Tax, Insurance and HOA costs)</p>
+                    </div>
+                    <span>What area are you interested in? </span>
+                    <div class="container input-row">
+                        <label for="">City:</label>
+                        <input type="text" name="city">
+                    </div>
+                    <div class="container input-row">
+                        <label for="">State:</label>
+                        <input type="text" name="state">
+                    </div>
+                    <div class="container input-row">
+                        <label for="">Search Radius: </label>
+                        <input type="number" name="radius" placeholder="in miles">
+                    </div>
+                    <div class="input-row"><input type="submit" value="Find Me Some Homes!" class="btn btn-outline-secondary"></div>
+                </form>
+            </div>
         </div>
-        <div class="box">
+        <br>
+        <div class="box-around">
             <h4>Please Read:</h4>
-            <p>*** All results are estimates only and in no way guarantee any kind of approval.Please consult with a<br>
-                licensed Mortgage Loan or Real Estate professional to discuss your options.</p>
+            <p>*** All results are estimates only and in no way guarantee any kind of approval.  Please consult with a licensed <a href="https://www.loandepot.com/">Mortgage Loan professional</a>  or <a href="https://www.realtor.com/realestateagents/">Real Estate professional</a> to discuss your options.</p>
             <p>*** Results are for primary residence properties only based on conventional loan guidelines.</p>
 
         </div>
