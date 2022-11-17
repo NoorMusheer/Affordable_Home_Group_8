@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <title>A Web Page</title>
 </head>
 <style>
@@ -12,53 +16,82 @@
         border: solid black 2px;
         width: 50%;
     }
-    p{
+
+    p {
         text-indent: 25px;
     }
 </style>
 
 <body>
-    <div class="nav">
-        <h1 class="nav-title">Afordable Homes</h1>
-        <h3>Welcome ...?</h3>
-        <input type="submit" value="Home" class="offset-btn">
-        <input type="submit" value="Log out" class="offset-btn">
-    </div>
-    <p>Something To call........</p>
-    <p class="box">Here you can search for homes that fall within your monthly budjet.Just fill in some <br>
-    information below and we will send you results that we think you might qulify to purchase.</p>
-    <div class="col">
-        <form action="/...?" method="POST">
-            {% with messages = get_flashed_messages(category_filter=["register"]) %}
+    <div class="container">
+        <div class="container row">
+            <div class="col-8">
+                <h1>Affordable Homes</h1>
+                <a href="/dashboard" class="btn btn-outline-secondary">My Profile</a>
+            </div>
+
+
+            <div class="col">
+                <div class="container">
+                    <h2>Welcome, {{session['first_name']}}</h2>
+                    <a href="/affordablehomes/home" class="btn btn-outline-secondary">Home</a>
+                    <a href="/logout" class="btn btn-outline-secondary">Log Out</a>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <p>Something To call........</p>
+        <p class="box">Here you can search for homes that fall within your monthly budjet.Just fill in some <br>
+            information below and we will send you results that we think you might qulify to purchase.</p>
+        <div class="col">
+            <form action="/affordablehomes/estimate/results" method="POST">
+                {% with messages = get_flashed_messages(category_filter=["register"]) %}
                 {% if messages %}
-                    {% for message in messages %}
-                        <p>{{message}}</p>
-                    {% endfor %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
                 {% endif %}
-            {% endwith %}
-            <div class="container">
-                <label for="total" class="label-col">Your Total Down Payment</label>
-                <input type="number" name="total" id="total">
-            </div>
-            <div class="container">
-                <label for="score" class="label-col">Your Estimate Credit Score</label>
-                <input type="number" name="score" id="score"><p><a href="...?">Click Here</a>to learn more about qualifying credit scores</p>
-            </div>
-            <div class="container">
-                <label for="monthly" class="label-col">Estimate Monthly House Allowance</label>
-                <input type="number" name="monthly" id="monthly"><p>include Principle, Interest, Property Tax, Insurance and HOA costs</p>
-            </div>
-            <input type="submit" value="Submit" class="offset-btn">
-        </form>
-    </div>
-    <div class="box">
-        <h4>Please Read:</h4>
-        <p >*** All results are estimates only and in no way guarantee any kind of approval.Please consult with a<br>
-            licensed Mortgage Loan or Real Estate professional to discuss your options.</p>
+                {% endwith %}
+                <div class="container">
+                    <label for="down_payment" class="label-col">Your Total Down Payment</label>
+                    <input type="number" name="down_payment" id="down_payment">
+                </div>
+                <div class="container">
+                    <label for="score" class="label-col">Your Estimate Credit Score</label>
+                    <input type="number" name="score" id="score">
+                    <p><a href="...?">Click Here</a>to learn more about qualifying credit scores</p>
+                </div>
+                <div class="container">
+                    <label for="max_monthly" class="label-col">Estimate Monthly House Allowance</label>
+                    <input type="number" name="max_monthly" id="max_monthly">
+                    <p>include Principle, Interest, Property Tax, Insurance and HOA costs</p>
+                </div>
+                <div class="form-input">
+                    <label for="">City</label>
+                    <input type="text" name="city">
+                </div>
+                <div class="form-input">
+                    <label for="">State</label>
+                    <input type="text" name="state">
+                </div>
+                <div class="form-input">
+                    <label for="">Search Radius</label>
+                    <input type="number" name="radius">
+                </div>
+                <input type="submit" value="Submit" class="offset-btn">
+            </form>
+        </div>
+        <div class="box">
+            <h4>Please Read:</h4>
+            <p>*** All results are estimates only and in no way guarantee any kind of approval.Please consult with a<br>
+                licensed Mortgage Loan or Real Estate professional to discuss your options.</p>
             <p>*** Results are for primary residence properties only based on conventional loan guidelines.</p>
 
+        </div>
     </div>
-
 </body>
 
 </html>

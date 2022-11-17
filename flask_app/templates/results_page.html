@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Practice Results</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container row">
+            <div class="col-8">
+                <h1>Affordable Homes</h1>
+                <a href="/affordablehomes/profile" class="btn btn-outline-secondary">My Profile!</a>
+            </div>
+
+
+            <div class="col">
+                <div class="container">
+                    <h2>Welcome, {{session['first_name']}}</h2>
+                    <a href="/affordablehomes/home" class="btn btn-outline-secondary">Home</a>
+                    <a href="/logout" class="btn btn-outline-secondary">Log Out</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row header-row">
+                <h1>HERE ARE YOUR RESULTS</h1>
+            </div>
+            <br>
+            <div style="border:2px solid black">
+                <p>$3500 max payment</p><br>
+                <p>6.75% is the average rate for a 30 yr fixed today</p><br>
+                <p>We estimate your max sales price to be $422,888</p><br>
+                <p>These are the most relevant 18 listings within {{session['radius']}} miles of Fremont, CA</p><br>
+
+            </div>
+            <br>
+
+            <table>
+                <thead>
+                    <th>Img</th>
+                    <th>address</th>
+                    <th>price</th>
+                    <th>Type</th>
+                    <th>Baths</th>
+                    <th>Lot size</th>
+                </thead>
+                <tbody>
+                    {%for addr in addresses%}
+                    <tr>
+                        <td><a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image"
+                                    style="width:70%;"></a></td>
+                        <td>{{addr['street_address']}}, {{addr['city']}}, {{addr['state']}}
+                            {{addr['zip_code']}}</td>
+                        <td>{{"${:0,.0f}".format(addr['price'])}}</td>
+                        <td>{{addr['type']}}</td>
+                        <td>{{addr['beds']}}</td>
+                        <td>{{addr['baths']}}</td>
+                        <td>{{addr['size']}} sqft.</td>
+                        <td>
+                            {%if addr['favorite'] == 1 %}
+                            Already Saved
+                            {% else %}
+                            <a href="/save/{{addr['id']}}"><button value="">
+                                    Save</button></a>
+                            {%endif%}
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+            Card Group from Bootstrap
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                {%for addr in addresses%}
+                <div class="col">
+                    <div class="card h-100" style="box-shadow:2px 2px 2px black;">
+                        <a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image"
+                                style="width:70%;"></a>
+                        </td>
+                        <div class="card-body">
+                            <h5 class="prop-addr"><a href=""> {{addr['street_address']}}, {{addr['city']}},
+                                    {{addr['state']}}
+                                    {{addr['zip_code']}}</a></h5>
+                            <p class="card-text">{{"${:0,.0f}".format(addr['price'])}}</p>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+</body>
+
+</html>

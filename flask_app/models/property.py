@@ -18,11 +18,11 @@ class Property:
         self.size = p_data['size']
         self.price = p_data['price']
         self.favorite = p_data['favorite']
-        self.photo=p_data['photo']
-        self.web=p_data['web']
-        self.beds=p_data['beds']
-        self.baths=p_data['baths']
-        self.lot_size=p_data['lot_size']
+        self.photo = p_data['photo']
+        self.web = p_data['web']
+        self.beds = p_data['beds']
+        self.baths = p_data['baths']
+        self.lot_size = p_data['lot_size']
         self.created_at = p_data['created_at']
         self.updated_at = p_data['updated_at']
         self.buyer_id = p_data['buyer_id']
@@ -36,6 +36,9 @@ class Property:
             properties.append(row)
         return properties
 
+
+# sss
+
     @classmethod
     def add_to_properties_list(cls, prop_data):
         query = "INSERT INTO properties (street_address, city, state, zip_code, type, size, price, photo, web, beds, baths, created_at, updated_at, buyer_id) VALUES (%(street_address)s, %(city)s, %(state)s, %(zip_code)s, %(type)s, %(size)s, %(price)s, %(photo)s, %(web)s, %(beds)s, %(baths)s, NOW(), NOW(), %(buyer_id)s);"
@@ -48,10 +51,10 @@ class Property:
 
     @classmethod
     def favorited(cls, id):
-        data={
-            "id":id
+        data = {
+            "id": id
         }
-        query ="""
+        query = """
             UPDATE properties
             SET favorite = 1
             WHERE id = %(id)s;
@@ -65,13 +68,12 @@ class Property:
         headers = {
             'X-RapidAPI-Key': "c05b87795bmsh798a906721c803ep1bb0e9jsn76bc358834d6",
             'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
-            }
-        conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) +"&city=" + str(home_data_input['city']) + "&offset=0&limit=4&sort=relevance&radius="+ str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
+        }
+        conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) + "&city=" + str(
+            home_data_input['city']) + "&offset=0&limit=4&sort=relevance&radius=" + str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
 
         res = conn.getresponse()
         data = res.read()
         parse_json = json.loads(data)
         prop_data = parse_json['listings']
         return prop_data
-
-    
