@@ -43,26 +43,26 @@ def user_parameters():
     return render_template('results_page.html', addresses=addresses)
 
 
-@app.route('/dashboard_practice')
-def user_dashboard():
-    return render_template('practice_user_input.html')
+# @app.route('/dashboard_practice')
+# def user_dashboard():
+#     return render_template('practice_user_input.html')
 
 
-@app.route('/affordablehomes/condo')
-def condo_page():
-    return render_template('dashboard_condos.html')
+# @app.route('/affordablehomes/condo')
+# def condo_page():
+#     return render_template('dashboard_condos.html')
 
 
 @app.route('/affordablehomes/home')
 def home_page():
-    return render_template('dashboard_homes.html')
+    return render_template('dashboard.html')
 
 
-@app.route('/affordablehomes/estimate')
-def estimate_page():
-    return render_template('estimate_page.html')
+# @app.route('/affordablehomes/estimate')
+# def estimate_page():
+#     return render_template('estimate_page.html')
 
 
-@app.route('/affordablehomes/profile')
-def profile_page():
-    return render_template('profile_page.html')
+# @app.route('/affordablehomes/profile')
+# def profile_page():
+#     return render_template('profile_page.html')
