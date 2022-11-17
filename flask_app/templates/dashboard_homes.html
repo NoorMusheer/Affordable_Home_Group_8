@@ -34,7 +34,27 @@
         <br>
 
         <h2>Here are some recommendations for you</h2>
+        <!-- CARD GROUP STARTS HERE -->
 
+        <div class="row row-cols-1 row-cols-md-6 g-4">
+            {%for home in featured_homes%}
+            <div class="col">
+                <div class="card h-70">
+                    <img src="{{home['photo']}}" class="card-img-top" alt="featured_property_photo">
+                    <div class="card-body">
+                        <h5 class="card-title">{{home['address_new']['line']}}, {{home['address_new']['city']}}, {{home['address_new']['state_code']}} {{home['address_new']['postal_code']}}</h5>
+                        <p class="card-text">
+                            <h5>{{home['price']}}</h5>
+                            <h6>{{home['condo']}}</h6>
+                            <p>{{home['beds']}} beds / {{home['baths']}} baths / {{home['sqft']}} sq ft.</p>
+                            <a href="{{home['rdc_web_url']}}">See More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <!-- CARD GROUP ENDS HERE.  -->
         <br>
 
         <div class="btn-group" role="toolbar" aria-label="Basic outlined example">
@@ -45,23 +65,6 @@
         <br>
         <br>
 
-        Card Group from Bootstrap
-        <div class="row row-cols-1 row-cols-md-5 g-4">
-            {%for addr in addresses%}
-            <div class="col">
-                <div class="card h-100" style="box-shadow:2px 2px 2px black;">
-                    <a href="{{addr['web']}}"><img src="{{addr['photo']}}" alt="Property Image" style="width:70%;"></a>
-                    </td>
-                    <div class="card-body">
-                        <h5 class="prop-addr"><a href=""> {{addr['street_address']}}, {{addr['city']}},
-                                {{addr['state']}}
-                                {{addr['zip_code']}}</a></h5>
-                        <p class="card-text">{{"${:0,.0f}".format(addr['price'])}}</p>
-                    </div>
-                </div>
-            </div>
-            {%endfor%}
-        </div>
     </div>
 
 </body>

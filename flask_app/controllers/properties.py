@@ -48,10 +48,6 @@ def user_parameters():
 #     return render_template('practice_user_input.html')
 
 
-# @app.route('/condo')
-# def condo_page():
-#     return render_template('dashboard_condos.html')
-
 # @app.route('/affordablehomes/condo')
 # def condo_page():
 #     return render_template('dashboard_condos.html')
