@@ -39,13 +39,18 @@ body {
     padding: 0;
 }
 
-h1,h2, #login_box{
+h1,h2{
     color: rgb(65, 107, 107);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 
 }
 
-#login_box{
+.login_box{
     padding: 20px;
+    color: rgb(65, 107, 107);
+    font-weight: bold;
+    text-shadow: -0.5px 0 beige, 0 0.5px beige, 0.5px 0 beige, 0 -0.5px beige;
+    font-size: 1.5em;
 }
 
 .form-input{
