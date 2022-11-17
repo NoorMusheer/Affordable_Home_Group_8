@@ -1,6 +1,7 @@
 from flask_app import app
 from flask_app.models import user, property
 from flask_app.controllers.mtg_rates import avg_rate
+from flask_app.controllers import api_requests
 from flask import render_template, redirect, session, request
 
 
@@ -39,7 +40,6 @@ def user_parameters():
         }
         property.Property.add_to_properties_list(addr_data)
     addresses = property.Property.get_all_properties()
-    print("**** ADDRESSES *** :", addresses)
     return render_template('results_page.html', addresses=addresses)
 
 
@@ -48,14 +48,19 @@ def user_dashboard():
     return render_template('practice_user_input.html')
 
 
-@app.route('/affordablehomes/condo')
-def condo_page():
-    return render_template('dashboard_condos.html')
+# @app.route('/condo')
+# def condo_page():
+#     return render_template('dashboard_condos.html')
+
+# @app.route('/affordablehomes/condo')
+# def condo_page():
+#     return render_template('dashboard_condos.html')
 
 
 @app.route('/affordablehomes/home')
 def home_page():
-    return render_template('dashboard_homes.html')
+    featured_homes = api_requests.get_featured_homes()
+    return render_template('practice_dashboard_homes.html', featured_homes = featured_homes)
 
 
 @app.route('/affordablehomes/estimate')
@@ -63,6 +68,6 @@ def estimate_page():
     return render_template('estimate_page.html')
 
 
-@app.route('/affordablehomes/profile')
-def profile_page():
-    return render_template('profile_page.html')
+# @app.route('/affordablehomes/profile')
+# def profile_page():
+#     return render_template('profile_page.html')
