@@ -75,3 +75,4 @@ class Property:
         parse_json = json.loads(data)
         prop_data = parse_json['listings']
         return prop_data
+
