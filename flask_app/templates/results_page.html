@@ -36,10 +36,10 @@
             </div>
             <br>
             <div style="border:2px solid black">
-                <p>$3500 max payment</p><br>
-                <p>6.75% is the average rate for a 30 yr fixed today</p><br>
-                <p>We estimate your max sales price to be $422,888</p><br>
-                <p>These are the most relevant 18 listings within {{session['radius']}} miles of Fremont, CA</p><br>
+                <p>{{"${:0,.0f}".format(parameters['max_monthly'])}} max payment</p><br>
+                <p>{{parameters['avg_rate']}}% is the average rate for a 30 yr fixed with 5% down payment today</p><br>
+                <p>We estimate your max sales price to be {{"${:0,.0f}".format(parameters['max_price'])}}</p><br>
+                <p>These are the most relevant 25 listings within {{parameters['radius']}} miles of {{parameters['city']}}, {{parameters['state']}}</p><br>
 
             </div>
             <br>
