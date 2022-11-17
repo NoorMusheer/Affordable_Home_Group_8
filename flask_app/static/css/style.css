@@ -1,6 +1,6 @@
 *{
     padding: 0;
-    margin: 20px;
+    margin: auto;
 }
 
 body {
@@ -37,7 +37,8 @@ body {
 }
 
 h1,h2, #login_box{
-    color: azure;
+    color: rgb(65, 107, 107);
+
 }
 
 #login_box{
@@ -47,4 +48,17 @@ h1,h2, #login_box{
 .form-input{
     margin: 0;
     padding: 0;
+}
+
+.box-around{
+    border:2px solid black;
+    padding:3px;
+}
+
+.row{
+    margin-bottom:3%;
+}
+
+.card{
+    box-shadow:2px 2px 2px slategray;
 }
