@@ -116,14 +116,15 @@ class User:
             is_valid = False
         return is_valid
 
+
     @staticmethod
     def validate_login(user_exists, user_login_data):
         is_valid = True
         if not user_exists:
-            flash("**The entered E-mail does not exist. Please register", "login")
+            flash("Invalid login credentials!", "login")
             is_valid = False
         elif not bcrypt.check_password_hash(user_exists['password'], user_login_data['password']):
-            flash("** Incorrect password. Please try again. ", "login")
+            flash("Invalid login credentials!", "login")
             is_valid = False
         return is_valid
 

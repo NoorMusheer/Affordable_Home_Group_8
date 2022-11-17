@@ -34,24 +34,19 @@ def register_user():
     session["buyer_id"] = user.User.create_user(data) 
     return redirect("/")
 
-# @app.route('/register', methods=['POST'])
-# def register_user():
-#     data = {
-#         "first_name": request.form['first_name'],
-#         "last_name": request.form['last_name'],
-#         "email": request.form['email'],
-#         "password": bcrypt.generate_password_hash(request.form['password']),
-#     }
-#     pw_check = {
-#         "password": request.form['password'],
-#         "re_enter_password": request.form['re_enter_password']
-#     }
-#     user_exists = user.User.get_user_by_email(data)
-#     if not user.User.validate_reg(data, user_exists, pw_check):
-#         return redirect('/reg_page')
-#     user.User.create_user(data)
-#     return redirect('/')
 
+# @app.route('/logged_in', methods=['POST'])
+# def logged_in_user():
+#     user_login_data = {
+#         "email": request.form['email'],
+#         "password": request.form['password']
+#     }
+#     user_exists = user.User.get_user_by_email(user_login_data)
+#     if not user.User.validate_login(user_exists, user_login_data):
+#         return redirect('/')
+#     session['id'] = user_exists['id']
+#     session['first_name'] = user_exists['first_name']
+#     return redirect('/affordablehomes/home')
 
 @app.route('/logged_in', methods=['POST'])
 def logged_in_user():
