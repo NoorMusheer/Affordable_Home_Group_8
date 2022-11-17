@@ -52,17 +52,18 @@ class User:
 
     @classmethod
     def get_favorited_by_user(cls,id):
+        data={
+            "id": id
+        }
         query = """
-        SELECT * FROM users 
-        LEFT JOIN properties 
-        ON users.id = properties.buyer_id
-        WHERE favorite = 1;
+            SELECT * FROM properties
+            LEFT JOIN users
+            ON favorite = 1
+            WHERE users.id = %(id)s
         """
-        favorites = []
-        results =  connectToMySQL(cls.db).query_db(query, id)
-        for fav in results:
-            favorites.append(fav)
-        return favorites
+        results =  connectToMySQL(cls.db).query_db(query, data)
+        print("****RESULTSSSS***** ", results)
+        return results
 
 
     @staticmethod

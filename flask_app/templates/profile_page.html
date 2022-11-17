@@ -32,7 +32,7 @@
         </div>
         <div class="container">
             <div class="row header-row">
-                <h1>Your Saved Pages</h1>
+                <h1>Your Saved Properties</h1>
             </div>
 
             <table>
@@ -51,7 +51,7 @@
                                     style="width:70%;"></a></td>
                         <td>{{fav['street_address']}}, {{fav['city']}}, {{fav['state']}}
                             {{fav['zip_code']}}</td>
-                        <td>{{"${:0,.0f}".format(addr['price'])}}</td>
+                        <td>{{"${:0,.0f}".format(fav['price'])}}</td>
                         <td>{{fav['type']}}</td>
                         <td>{{fav['beds']}}</td>
                         <td>{{fav['baths']}}</td>
@@ -60,8 +60,8 @@
                             {%if fav['favorite'] == 1 %}
                             Already Saved
                             {% else %}
-                            <a href="/save/{{addr['id']}}"><button value="">
-                                    Save</button></a>
+                            <a href=""><button value="">
+                                    Remove</button></a>
                             {%endif%}
                         </td>
                     </tr>
