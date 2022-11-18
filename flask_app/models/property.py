@@ -75,7 +75,7 @@ class Property:
         Property.delete_prev_results()
         conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
         headers = {
-            'X-RapidAPI-Key': "c05b87795bmsh798a906721c803ep1bb0e9jsn76bc358834d6",
+            'X-RapidAPI-Key': "",
             'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
         }
         conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) + "&city=" + str(
