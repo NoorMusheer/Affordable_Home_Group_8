@@ -1,5 +1,6 @@
 from flask_app import app
 from flask_app.config.mysqlconnectin import connectToMySQL
+from flask_app.controllers import api_requests
 from flask import flash
 import http.client
 import json
@@ -74,10 +75,9 @@ class Property:
     def get_listings_by_max_price(home_data_input):
         Property.delete_prev_results()
         conn = http.client.HTTPSConnection("realty-in-us.p.rapidapi.com")
-        headers = {
-            'X-RapidAPI-Key': "c05b87795bmsh798a906721c803ep1bb0e9jsn76bc358834d6",
-            'X-RapidAPI-Host': "realty-in-us.p.rapidapi.com"
-        }
+
+        headers = api_requests.headers
+        
         conn.request("GET", "/properties/list-for-sale?state_code=" + str(home_data_input['state']) + "&city=" + str(
             home_data_input['city']) + "&offset=0&limit=25&sort=relevance&radius=" + str(home_data_input['radius']) + "&price_max=" + str(home_data_input['max_price']) + "", headers=headers)
 
