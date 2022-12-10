@@ -96,4 +96,5 @@ def remove_fav(id):
 @app.route('/affordablehomes/home')
 def home_page():
     featured_homes = api_requests.get_featured_homes()
+    # print ("***************FEATURED HOMES ****************", featured_homes)
     return render_template('dashboard_homes.html', featured_homes = featured_homes)

@@ -3,7 +3,7 @@ from flask_app.config.mysqlconnectin import connectToMySQL
 from flask import flash
 from flask_app.controllers.mtg_rates import avg_rate
 import http.client
-import _json
+import json
 from flask_bcrypt import Bcrypt
 import re
 
